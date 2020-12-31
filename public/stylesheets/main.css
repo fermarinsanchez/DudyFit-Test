@@ -1,0 +1,16 @@
+input[type="number"] {
+    min-width: 66px;
+
+}
+
+.trainers-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.border-bottom {
+    width: 78vw;
+    height: 17px;
+    margin: 0 0 14px 0;
+}

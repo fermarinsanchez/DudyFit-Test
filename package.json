@@ -1,0 +1,26 @@
+{
+  "name": "dudyfit-test",
+  "version": "1.0.0",
+  "description": "Technical Test Interview",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon -e hbs,js,css app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fermarinsanchez/DudyFit-Test.git"
+  },
+  "author": "Fernando Marín Sánchez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fermarinsanchez/DudyFit-Test/issues"
+  },
+  "homepage": "https://github.com/fermarinsanchez/DudyFit-Test#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "handlebars": "^4.7.6",
+    "hbs": "^4.1.1",
+    "nodemon": "^2.0.6"
+  }
+}

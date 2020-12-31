@@ -1,0 +1,14 @@
+
+{ "clients":[
+    { "id": 1, "name": "q", "trainerRep": 2.6 },
+    { "id": 2, "name": "r", "trainerRep": 3.7 },
+    { "id": 3, "name": "s", "trainerRep": 8.5 },
+    { "id": 4, "name": "t", "trainerRep": 9.7 },
+    { "id": 5, "name": "u", "trainerRep": 2.6 },
+    { "id": 6, "name": "v", "trainerRep": 4.7 },
+    { "id": 7, "name": "w", "trainerRep": 5.6 },
+    { "id": 8, "name": "x", "trainerRep": 3.7 },
+    { "id": 9, "name": "y", "trainerRep": 8.1 },
+    { "id": 10, "name": "z", "trainerRep": 2.5 }
+
+]}
