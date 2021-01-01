@@ -1,0 +1,58 @@
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#trainers" role="tab" aria-controls="home"
+            aria-selected="true">Entrenadores</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#valoracion" role="tab" aria-controls="profile"
+            aria-selected="false">Valoración del conjunto</a>
+    </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="trainers" role="tabpanel" aria-labelledby="home-tab">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12 d-flex flex-wrap justify-content-center">
+                    {{#each matched}}
+                    <div class="card m-3" style="width: 18rem;">
+                        <div class="card-header d-flex justify-content-between">
+                            <span class="text-left">Entrenador {{this.id}}</span>
+                            <div type="button" class="btn btn-secondary btn-circle" data-toggle="tooltip"
+                                data-html="true" title="<small>Valoración: {{this.starsMedia}}</small><br><small>Máx clientes: 6</small>"
+                                data-placement="bottom">
+                                i
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-2">
+                                        <img src="https://res.cloudinary.com/difhe4gl3/image/upload/v1609490513/Trainer_kiekjf.jpg"
+                                            class="rounded-circle" style="width: 50px" alt="photo of the trainer">
+                                    </div>
+                                    <div class="col-10 pl-5">
+                                        <h5 class="card-title">{{this.name}}</h5>
+                                        <p class="card-text text-muted" style="margin-bottom: 0px;">Clientes asignados:
+                                        </p>
+                                        {{#each this.clients as | client |}}
+                                        <p class="text-muted" style="margin-bottom: 0px;">- Cliente "{{client.name}}"</p>
+                                        {{/each}}
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="card-footer text-muted">
+                            {{this.clients.length}} clientes asignados
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="tab-pane fade" id="valoracion" role="tabpanel" aria-labelledby="profile-tab">...</div>
+</div>
