@@ -1,58 +1,251 @@
-<ul class="nav nav-tabs" id="myTab" role="tablist">
-    <li class="nav-item">
-        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#trainers" role="tab" aria-controls="home"
-            aria-selected="true">Entrenadores</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#valoracion" role="tab" aria-controls="profile"
-            aria-selected="false">Valoración del conjunto</a>
-    </li>
-</ul>
-<div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active" id="trainers" role="tabpanel" aria-labelledby="home-tab">
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="text-center my-5">Pantalla de Resultados</h2>
+        </div>
+        <div class="col-12 ">
+            <ul class="nav nav-tabs nav-pane" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#trainers" role="tab"
+                        aria-controls="home" aria-selected="true">Entrenadores</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#valoracion" role="tab"
+                        aria-controls="profile" aria-selected="false">Valoración del conjunto</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="trainers" role="tabpanel" aria-labelledby="home-tab">
 
-        <div class="container">
-            <div class="row">
-                <div class="col-12 d-flex flex-wrap justify-content-center">
-                    {{#each matched}}
-                    <div class="card m-3" style="width: 18rem;">
-                        <div class="card-header d-flex justify-content-between">
-                            <span class="text-left">Entrenador {{this.id}}</span>
-                            <div type="button" class="btn btn-secondary btn-circle" data-toggle="tooltip"
-                                data-html="true" title="<small>Valoración: {{this.starsMedia}}</small><br><small>Máx clientes: 6</small>"
-                                data-placement="bottom">
-                                i
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-2">
-                                        <img src="https://res.cloudinary.com/difhe4gl3/image/upload/v1609490513/Trainer_kiekjf.jpg"
-                                            class="rounded-circle" style="width: 50px" alt="photo of the trainer">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 d-flex flex-wrap justify-content-center">
+                                {{#each matched}}
+                                <div class="card m-3" style="width: 18rem;">
+                                    <div class="card-header d-flex justify-content-between">
+                                        <span class="text-left">Entrenador {{this.id}}</span>
+                                        <div type="button" class="btn btn-secondary btn-circle" data-toggle="tooltip"
+                                            data-html="true"
+                                            title="<small>Valoración: {{this.reputation}}</small><br><small>Máx clientes: 6</small>"
+                                            data-placement="bottom">
+                                            i
+                                        </div>
                                     </div>
-                                    <div class="col-10 pl-5">
-                                        <h5 class="card-title">{{this.name}}</h5>
-                                        <p class="card-text text-muted" style="margin-bottom: 0px;">Clientes asignados:
-                                        </p>
-                                        {{#each this.clients as | client |}}
-                                        <p class="text-muted" style="margin-bottom: 0px;">- Cliente "{{client.name}}"</p>
-                                        {{/each}}
+                                    <div class="card-body">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-2">
+                                                    <img src="https://res.cloudinary.com/difhe4gl3/image/upload/v1609490513/Trainer_kiekjf.jpg"
+                                                        class="rounded-circle" style="width: 50px"
+                                                        alt="photo of the trainer">
+                                                </div>
+                                                <div class="col-10 pl-5">
+                                                    <h5 class="card-title">{{this.name}}</h5>
+                                                    <p class="card-text text-muted" style="margin-bottom: 0px;">Clientes
+                                                        asignados:
+                                                    </p>
+                                                    {{#each this.clients as | client |}}
+                                                    <p class="text-muted" style="margin-bottom: 0px;">- Cliente
+                                                        "{{client.name}}"</p>
+                                                    {{/each}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer text-muted">
+                                        {{this.clients.length}} clientes asignados
                                     </div>
                                 </div>
+                                {{/each}}
                             </div>
-
-
-                        </div>
-                        <div class="card-footer text-muted">
-                            {{this.clients.length}} clientes asignados
                         </div>
                     </div>
-                    {{/each}}
+                </div>
+                <div class="tab-pane fade" id="valoracion" role="tabpanel" aria-labelledby="profile-tab">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <div class="d-flex flex-column justify-content-center align-items-center pb-5">
+                                    <h2>Indice de Satisfacción en Conjunto</h2>
+                                    <h1 class="mr-3">{{globalMedia}}</h1>
+                                    <div class="star-ratings-css" title="4.125"></div>
+                                </div>
+                                <div class="text-left">
+                                    <h4>Explicación del cálculo</h4>
+                                    <p>Basándome en los datos que se muestran en la tabla del enunciado, cada Entrenador
+                                        tiene un índice de reputación (<b>IR</b>) con valores entre cero (0) y cinco
+                                        (5). Cada
+                                        cliente tiene un valor de la importancia de la reputación del entrenador
+                                        (<b>IRE</b>)
+                                        con unos valores de cero (0) a diez (10).</p>
+                                    <p>Para generar este índice de satisfacción en conjunto he realizado el siguiente
+                                        cálculo:</p>
+                                    <ol>
+                                        <li><b>Cálculo del índice de satisfacción individual:</b> Función con un
+                                            algorítmo que
+                                            pasa el valor IRE (de 0 a 10) al mismo rango del IR (de 0 a 5), dividiendo
+                                            este entre dos (2). <br>A continuación, calculo la diferencia entre ambos
+                                            valores (IRE - IR). Obtengo un valor y le asigno un número de estrellas
+                                            de rating entre cero (0) y seis (6) siendo cero estrellas un total desacuerdo
+                                            con el emparejamiento y seis estrellas un emparejamiento óptimo;
+                                            aplico la siguiente lógica:
+                                            <ul>
+                                                <li>Cualquier número menor o igual a 0 => <b>6 estrellas</b></li>
+                                                <li>Un número mayor que 0 y menor o igual a 0.2 => <b>5 estrellas</b>
+                                                </li>
+                                                <li>Un número mayor que 0.2 y menor o igual a 0.4 => <b>4 estrellas</b>
+                                                </li>
+                                                <li>Un número mayor que 0.4 y menor o igual a 0.6 => <b>3 estrellas</b>
+                                                </li>
+                                                <li>Un número mayor que 0.6 y menor o igual a 0.8 => <b>2 estrellas</b>
+                                                </li>
+                                                <li>Un número mayor que 0.8 y menor a 1 => <b>1 estrella</b></li>
+                                                <li>Un número igual a 1 => <b>0 estrellas</b></li>
+                                            </ul>
+                                            Después, añado al objeto de emparejamiento un nuevo par (key: value) en
+                                            cada
+                                            cliente con las estrellas que le otorga a su emparejamiento. <br>
+                                        <li>
+                                            <b>Cálculo de la media por entrenador:</b> Con una nueva función,
+                                            consigo
+                                            calcular la media de satisfación por
+                                            entrenador, en base a las calificaciones que cada cliente con el que se le
+                                            ha emparejado y añado un nuevo par (key: value) a cada entrenador.
+                                        </li>
+                                        <li><b>Cálculo del índice de valoración en conjunto:</b> Resulta de la media de
+                                            satisfacción global de cada entrenador. Obtenemos una media de <b>4,125
+                                                estrellas sobre 6</b>.</li>
+                                        </li>
+                                    </ol>
+                                    <p>
+                                        A continuación, adjunto Array de objetos que he construido para exponer mi
+                                        solución a esta prueba técnica:
+                                    </p>
+                                    <pre>
+                                        <code>
+[
+   {
+      "id": 3,
+      "name": "C",
+      "reputation": 1.2,
+      "available": 3,
+      "clients": [
+         {
+            "id": 10,
+            "name": "z",
+            "trainerRep": 2.5,
+            "satisfValue": 0.05,
+            "satisfStars": 5
+         },
+         {
+            "id": 1,
+            "name": "q",
+            "trainerRep": 2.6,
+            "satisfValue": 0.1,
+            "satisfStars": 5
+         },
+         {
+            "id": 5,
+            "name": "u",
+            "trainerRep": 2.6,
+            "satisfValue": 0.1,
+            "satisfStars": 5
+         }
+      ],
+      "starsMedia": 5
+   },
+   {
+      "id": 2,
+      "name": "B",
+      "reputation": 3.2,
+      "available": 4,
+      "clients": [
+         {
+            "id": 2,
+            "name": "r",
+            "trainerRep": 3.7,
+            "satisfValue": -1.35,
+            "satisfStars": 6
+         },
+         {
+            "id": 8,
+            "name": "x",
+            "trainerRep": 3.7,
+            "satisfValue": -1.35,
+            "satisfStars": 6
+         },
+         {
+            "id": 6,
+            "name": "v",
+            "trainerRep": 4.7,
+            "satisfValue": -0.85,
+            "satisfStars": 6
+         },
+         {
+            "id": 7,
+            "name": "w",
+            "trainerRep": 5.6,
+            "satisfValue": -0.4,
+            "satisfStars": 6
+         }
+      ],
+      "starsMedia": 6
+   },
+   {
+      "id": 4,
+      "name": "D",
+      "reputation": 3.4,
+      "available": 2,
+      "clients": [
+         {
+            "id": 9,
+            "name": "y",
+            "trainerRep": 8.1,
+            "satisfValue": 0.65,
+            "satisfStars": 2
+         },
+         {
+            "id": 3,
+            "name": "s",
+            "trainerRep": 8.5,
+            "satisfValue": 0.85,
+            "satisfStars": 1
+         }
+      ],
+      "starsMedia": 1.5
+   },
+   {
+      "id": 1,
+      "name": "A",
+      "reputation": 4.5,
+      "available": 1,
+      "clients": [
+         {
+            "id": 4,
+            "name": "t",
+            "trainerRep": 9.7,
+            "satisfValue": 0.35,
+            "satisfStars": 4
+         }
+      ],
+      "starsMedia": 4
+   }
+]
+                                        </code>
+                                    </pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
     </div>
-    <div class="tab-pane fade" id="valoracion" role="tabpanel" aria-labelledby="profile-tab">...</div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-right">
+            <a href="/trainers-config" class="btn btn-outline-secondary px-5 mt-3 mb-5 mr-3"> Volver</a>
+        </div>
+    </div>
 </div>
