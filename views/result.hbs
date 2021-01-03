@@ -49,7 +49,7 @@
                                                         "{{client.name}}"</p>
                                                     {{/each}}
                                                 </div>
-                                            </div> 
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="card-footer text-muted">
@@ -66,9 +66,10 @@
                         <div class="row">
                             <div class="col-12 text-center">
                                 <div class="d-flex flex-column justify-content-center align-items-center pb-5">
-                                    <h2>Indice de Satisfacción en Conjunto</h2>
-                                    <h1 class="mr-3">{{globalMedia}}</h1>
-                                    <div class="star-ratings-css" title="4.125"></div>
+                                    <h2 class="pt-5 pb-2">Indice de Satisfacción en Conjunto</h2>
+                                    <h1>{{globalMedia}}</h1>
+                                    <img src="https://res.cloudinary.com/difhe4gl3/image/upload/v1609692754/Captura_de_pantalla_2021-01-03_a_las_17.50.44_ixpr3t.png"
+                                        alt="rating stars">
                                 </div>
                                 <div class="text-left">
                                     <h4>Explicación del cálculo</h4>
@@ -86,7 +87,8 @@
                                             pasa el valor IRE (de 0 a 10) al mismo rango del IR (de 0 a 5), dividiendo
                                             este entre dos (2). <br>A continuación, calculo la diferencia entre ambos
                                             valores (IRE - IR). Obtengo un valor y le asigno un número de estrellas
-                                            de rating entre cero (0) y seis (6) siendo cero estrellas un total desacuerdo
+                                            de rating entre cero (0) y seis (6) siendo cero estrellas un total
+                                            desacuerdo
                                             con el emparejamiento y seis estrellas un emparejamiento óptimo;
                                             aplico la siguiente lógica:
                                             <ul>
@@ -104,13 +106,16 @@
                                             </ul>
                                             Después, añado al objeto de emparejamiento un nuevo par (key: value) en
                                             cada
-                                            cliente con las estrellas que le otorga a su emparejamiento con el entrenador. <br>
+                                            cliente con las estrellas que le otorga a su emparejamiento con el
+                                            entrenador. <br><br>
                                         <li>
+
                                             <b>Cálculo de la media por entrenador:</b> Con una nueva función,
                                             consigo
                                             calcular la media de satisfación de todos los clientes emparejados con este
                                             entrenador, en base a las calificaciones de cada cliente con el que se le
-                                            ha emparejado y añado un nuevo par (key: value) a cada entrenador con esa media.
+                                            ha emparejado y añado un nuevo par (key: value) a cada entrenador con esa
+                                            media.<br><br>
                                         </li>
                                         <li><b>Cálculo del índice de valoración en conjunto:</b> Resulta de la media de
                                             satisfacción global con cada entrenador. Obtenemos una media de <b>4,125
@@ -118,7 +123,7 @@
                                         </li>
                                     </ol>
                                     <p>
-                                        A continuación, adjunto Array de objetos que he construido para exponer mi
+                                        A continuación, adjunto Array de objetos que he construido mediante algoritmos para desarrollar mi
                                         solución a esta prueba técnica:
                                     </p>
                                     <pre>
