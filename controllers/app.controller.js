@@ -56,7 +56,6 @@ module.exports.trainersResult = (req, res, next) => {
                 client.satisfStars = valueToStars(client.satisfValue)
             })
         })
-        console.log(clients)
         return result
     }
 
