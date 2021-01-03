@@ -1,10 +1,7 @@
 const trainers = require('../data/trainers.json')
 const clients = require('../data/clients.json');
-const { json } = require('express');
+const { jsonCopy } = require('../helpers/JSONhelper')
 
-function jsonCopy(src) {
-    return JSON.parse(JSON.stringify(src));
-  }
 
 module.exports.renderHome = (req, res, next) => {
     res.render('home')
@@ -12,13 +9,14 @@ module.exports.renderHome = (req, res, next) => {
 
 module.exports.trainersConfig = (req, res, next) => {
     const configData = { trainers: trainers.trainers, clients: clients.clients }
-    console.log('configData:', configData)
+
     res.render('trainers', configData)
 }
 
 module.exports.trainersResult = (req, res, next) => {
 
     const valueToStars = (value) => {
+
         if (value <= 0) {
             return 6
         } else if (value > 0 && value <= 0.2) {
@@ -37,9 +35,9 @@ module.exports.trainersResult = (req, res, next) => {
     }
 
     const matchingAndClientsSatisf = (trainers, clients) => {
+
         let newTrainers = jsonCopy(trainers)
         let newClients = jsonCopy(clients)
-        console.log(newClients,newTrainers)
         let sortTrainers = newTrainers.trainers.sort((a, b) => a.reputation - b.reputation)
         let sortClients = newClients.clients.sort((a, b) => a.trainerRep - b.trainerRep)
         let result = [...sortTrainers]
@@ -65,6 +63,7 @@ module.exports.trainersResult = (req, res, next) => {
     let matched = matchingAndClientsSatisf(trainers, clients)
 
     const satisfTrainerMedia = (obj) => {
+
         for (let i = 0; i < obj.length; i++) {
             let starsPerTrainer = obj[i].clients.map(elem => elem.satisfStars)
             let starsPerTrainerSum = starsPerTrainer.reduce((acc, curr) => acc + curr, 0)
@@ -77,6 +76,7 @@ module.exports.trainersResult = (req, res, next) => {
     let matchedWithTrainerMedia = satisfTrainerMedia(matched)
 
     const satisfGlobalMedia = (obj) => {
+
         let totalStars = obj.map(elem => elem.starsMedia)
         let totalStarsSum = totalStars.reduce((acc, curr) => acc + curr, 0)
         let totalStarsMedia = totalStarsSum / totalStars.length
@@ -86,6 +86,6 @@ module.exports.trainersResult = (req, res, next) => {
     const satisfGlobalMediaValue = satisfGlobalMedia(matchedWithTrainerMedia)
 
     const data = { matched: matchedWithTrainerMedia, globalMedia: satisfGlobalMediaValue }
-    console.log('data:', data)
+  
     res.render('result', data)
 }
