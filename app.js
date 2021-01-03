@@ -12,4 +12,6 @@ const router = require('./routes/routes')
 app.use('/', router)
 
 
-app.listen(3000, () => console.log('My first app listening on port 3000! '));
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => console.log('My first app listening on port 3000! '));
